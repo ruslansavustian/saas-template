@@ -21,7 +21,9 @@ cd frontend && npm install
 cd backend && npm install
 
 
-npm run dev (run frontend + backend in Docker)
+from root folder  -  npm run dev (run frontend + backend in Docker)!
+
+
 ```
 
 ### 3. Service Access
