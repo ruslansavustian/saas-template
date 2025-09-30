@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import "@/components/dashboard/dashboard.css";
+import "./confirmation-modal.css";
 
 interface ConfirmationModalProps {
   isOpen: boolean;
