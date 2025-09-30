@@ -1,0 +1,175 @@
+/* Navigation Menu Styles */
+.navigation-menu {
+  width: 200px;
+  background: #1f2937;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-menu__user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.navigation-menu__user-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-menu__user-info {
+  text-align: center;
+}
+
+.navigation-menu__user-name {
+  font-weight: 600;
+  color: white;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.navigation-menu__user-role {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.navigation-menu__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  flex: 1;
+}
+
+.navigation-menu__item {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.navigation-menu__item-title {
+  display: block;
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+  color: #d1d5db;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.875rem;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.navigation-menu__item-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(29, 78, 216, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.navigation-menu__item:hover .navigation-menu__item-title {
+  color: white;
+  transform: translateX(4px);
+}
+
+.navigation-menu__item:hover .navigation-menu__item-title::before {
+  opacity: 1;
+}
+
+.navigation-menu__item--active .navigation-menu__item-title {
+  color: white;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(29, 78, 216, 0.2)
+  );
+  transform: translateX(4px);
+}
+
+.navigation-menu__item-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.125rem;
+  background-color: #4b5563;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.navigation-menu__item-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  border-radius: 9999px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.navigation-menu__item:hover .navigation-menu__item-progress {
+  width: 100%;
+}
+
+.navigation-menu__item--active .navigation-menu__item-progress {
+  width: 100%;
+}
+
+/* Navigation is now static, no body margin needed */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navigation-menu {
+    width: 100%;
+    margin: 0 1rem 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation-menu {
+    width: 100%;
+    margin: 0 0.5rem 2rem 0.5rem;
+    padding: 1rem;
+  }
+
+  .navigation-menu__user-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .navigation-menu__item-title {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.8rem;
+  }
+}

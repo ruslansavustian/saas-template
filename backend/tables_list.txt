@@ -1,0 +1,13 @@
+               List of relations
+ Schema |      Name       |   Type   |  Owner   
+--------+-----------------+----------+----------
+ public | orders          | table    | postgres
+ public | orders_id_seq   | sequence | postgres
+ public | products        | table    | postgres
+ public | products_id_seq | sequence | postgres
+ public | roles           | table    | postgres
+ public | roles_id_seq    | sequence | postgres
+ public | users           | table    | postgres
+ public | users_id_seq    | sequence | postgres
+(8 rows)
+

@@ -1,0 +1,13 @@
+                                            List of relations
+ Schema |      Name       |   Type   |  Owner   | Persistence | Access method |    Size    | Description 
+--------+-----------------+----------+----------+-------------+---------------+------------+-------------
+ public | orders          | table    | postgres | permanent   | heap          | 16 kB      | 
+ public | orders_id_seq   | sequence | postgres | permanent   |               | 8192 bytes | 
+ public | products        | table    | postgres | permanent   | heap          | 56 kB      | 
+ public | products_id_seq | sequence | postgres | permanent   |               | 8192 bytes | 
+ public | roles           | table    | postgres | permanent   | heap          | 16 kB      | 
+ public | roles_id_seq    | sequence | postgres | permanent   |               | 8192 bytes | 
+ public | users           | table    | postgres | permanent   | heap          | 16 kB      | 
+ public | users_id_seq    | sequence | postgres | permanent   |               | 8192 bytes | 
+(8 rows)
+

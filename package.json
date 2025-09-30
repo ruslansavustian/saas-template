@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "docker compose up --build",
+    "test:backend": "docker compose --profile test run --rm test-backend npm run test:e2e && docker compose --profile test down",
+    "test:frontend": "cd frontend && npm run test",
+    "generate-orders:bash": "./generate-orders.sh",
+    "generate-orders:python": "python3 generate-orders.py"
+  }
+}

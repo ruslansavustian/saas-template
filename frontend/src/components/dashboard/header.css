@@ -1,0 +1,65 @@
+/* Dashboard Header Styles */
+.dashboard-header {
+  background: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.dashboard-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.dashboard-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-header__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.dashboard-header__info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Additional header styles can be added here as needed */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-header__container {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .dashboard-header__info {
+    justify-content: center;
+  }
+
+  .dashboard-header__title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    padding: 1rem;
+  }
+
+  .dashboard-header__info {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

@@ -1,0 +1,272 @@
+/* Service Points Page Styles */
+.dashboard-page {
+  padding: 2rem;
+}
+
+.dashboard-page__content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Empty State */
+.dashboard-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-page__empty-icon {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+.dashboard-page__empty h3 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.dashboard-page__add-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.dashboard-page__add-button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Service Points Layout */
+.service-points-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  min-height: 70vh;
+}
+
+/* Service Points List */
+.service-points-list {
+  background: transparent;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: none;
+  border: none;
+  overflow: hidden;
+}
+
+.service-points-list__header {
+  border-bottom: 1px solid #e2e8f0;
+
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-points-list__header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.service-points-list__content {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom Scrollbar */
+.service-points-list__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.service-points-list__content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.service-points-list__content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.service-points-list__content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Service Points Map Section */
+.service-points-map-section {
+  background: transparent;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: none;
+  border: none;
+  overflow: hidden;
+}
+
+.service-points-map-section__header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-points-map-section__header h3 {
+  color: #2d3748;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.service-points-map-section__content {
+  height: 60vh;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .service-points-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-points-map-section__content {
+    height: 50vh;
+  }
+
+  .service-points-list__content {
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 1rem;
+  }
+
+  .dashboard-page__empty {
+    padding: 2rem;
+    min-height: 50vh;
+  }
+
+  .dashboard-page__empty h3 {
+    font-size: 1.25rem;
+  }
+
+  .service-points-list,
+  .service-points-map-section {
+    padding: 1rem;
+  }
+
+  .dashboard-page > div:last-child {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-page__empty {
+    padding: 1.5rem;
+  }
+
+  .dashboard-page__empty h3 {
+    font-size: 1.125rem;
+  }
+
+  .dashboard-page__add-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .service-points-list__header h3,
+  .service-points-map-section__header h3 {
+    font-size: 1.125rem;
+  }
+
+  .dashboard-page > div:last-child h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Loading States */
+.service-points-list__content.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.service-points-map-section__content.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Hover Effects */
+
+/* Focus States for Accessibility */
+.dashboard-page__add-button:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .dashboard-page__empty {
+    background: rgba(30, 41, 59, 0.95);
+    color: #e2e8f0;
+  }
+
+  .dashboard-page__empty h3 {
+    color: #f1f5f9;
+  }
+
+  .dashboard-page__empty-icon {
+    color: #94a3b8;
+  }
+}

@@ -1,0 +1,75 @@
+services:
+  # Development services (no profile) - БД на Railway
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: backend_dev
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      PORT: ${PORT}
+      NODE_ENV: ${NODE_ENV}
+      FRONTEND_URL: ${FRONTEND_URL}
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend_dev
+    environment:
+      NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+      NEXT_PUBLIC_WS_URL: ${NEXT_PUBLIC_WS_URL}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+  test-database:
+    image: postgres:15
+    container_name: test_postgres
+    environment:
+      POSTGRES_DB: test_db
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
+    ports:
+      - "5434:5432"
+    volumes:
+      - test_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test_user -d test_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    profiles: ["test"]
+
+  # Test backend service
+  test-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: test_backend
+    environment:
+      TEST_DB_HOST: test-database
+      TEST_DB_PORT: 5432
+      NODE_ENV: test
+    depends_on:
+      test-database:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    profiles: ["test"]
+
+volumes:
+  test_postgres_data:
