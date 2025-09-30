@@ -9,24 +9,151 @@ SPA application for managing orders and products using Next.js, NestJS, and Post
 - Node.js 18+
 - Docker and Docker Compose
 - Git
+- PostgreSQL database (or use provided Railway database)
 
-### 1. Clone and Run
+### 1. Clone Repository
 
 ```bash
 # Clone repository
-git clone <repository-url>
-cd project
-
-npm install
-
-npm run dev (run frontend + backend in Docker)
+git clone https://github.com/ruslansavustian/saas-template.git
+cd saas-template
 ```
 
-### 3. Service Access
+### 2. Environment Setup
+
+```bash
+# Copy environment file
+cp env.example .env
+
+# Edit .env file with your database credentials
+# DATABASE_URL=postgresql://username:password@host:port/database
+```
+
+### 3. Install Dependencies
+
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd backend
+npm install
+cd ..
+
+# Install frontend dependencies
+cd frontend
+npm install
+cd ..
+```
+
+### 4. Database Setup
+
+```bash
+# Run database migrations (if needed)
+cd backend
+npm run build
+npm run start:prod
+```
+
+### 5. Run Application
+
+```bash
+# Option 1: Run everything with Docker
+npm run dev
+
+# Option 2: Run separately
+# Terminal 1 - Backend
+cd backend
+npm run start:dev
+
+# Terminal 2 - Frontend  
+cd frontend
+npm run dev
+```
+
+### 6. Service Access
 
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:3001
 - **Swagger**: http://localhost:3001/api
+
+## 🔧 Alternative Installation Methods
+
+### Method 1: Docker Compose (Recommended)
+
+```bash
+# Clone and setup
+git clone https://github.com/ruslansavustian/saas-template.git
+cd saas-template
+
+# Copy environment
+cp env.example .env
+
+# Run with Docker
+docker-compose up -d
+```
+
+### Method 2: Manual Setup
+
+```bash
+# 1. Clone repository
+git clone https://github.com/ruslansavustian/saas-template.git
+cd saas-template
+
+# 2. Setup environment
+cp env.example .env
+# Edit .env with your database URL
+
+# 3. Install all dependencies
+npm install
+cd backend && npm install && cd ..
+cd frontend && npm install && cd ..
+
+# 4. Build and run
+cd backend && npm run build && npm run start:prod &
+cd frontend && npm run dev &
+```
+
+### Method 3: Development Mode
+
+```bash
+# For development with hot reload
+npm run dev:backend  # Backend with watch mode
+npm run dev:frontend # Frontend with hot reload
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Port already in use**
+   ```bash
+   # Kill processes on ports 3000/3001
+   sudo lsof -ti:3000 | xargs kill -9
+   sudo lsof -ti:3001 | xargs kill -9
+   ```
+
+2. **Database connection issues**
+   ```bash
+   # Check .env file
+   cat .env
+   # Ensure DATABASE_URL is correct
+   ```
+
+3. **Node modules issues**
+   ```bash
+   # Clean install
+   rm -rf node_modules backend/node_modules frontend/node_modules
+   npm install
+   cd backend && npm install && cd ..
+   cd frontend && npm install && cd ..
+   ```
+
+4. **Permission issues**
+   ```bash
+   # Fix permissions
+   sudo chown -R $USER:$USER .
+   ```
 
 ### 4. Testing
 
